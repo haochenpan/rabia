@@ -1,0 +1,7 @@
+.idea
+logs
+rabia
+*.pyc
+*.out
+*.txt
+.DS_Store
