@@ -53,7 +53,7 @@ function install_go() {
     rm ${go_tar}
     echo 'export PATH=${PATH}:/usr/local/go/bin' >>~/.bashrc
     echo 'export GOPATH=~/go' >>~/.bashrc
-    echo 'export GO111MODULE="on"' >>~/.bashrc
+    echo 'export GO111MODULE="auto"' >>~/.bashrc
     source ~/.bashrc
     go version
 }
