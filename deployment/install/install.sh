@@ -74,7 +74,7 @@ function install_redis() {
     rm ${redis_ver}.tar.gz
     cd ${redis_ver}
     make
-    cd ..
+    cd ~/go/src/rabia/deployment
 }
 
 install_key
