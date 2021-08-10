@@ -237,6 +237,9 @@ significantly long time if there are many keys. Finally, run `flushall` to trunc
 When you intend to run Rabia without Redis, set `c.StorageMode` on a VMs. Admittedly, this setting is somewhat
 inconvenient, and we aim to fix this in the next major update.
 
+### 5.3 Run Redis Synchronous Replication
+
+We have implemented Redis synchronous replication for the purpose of comparison. See [code](https://github.com/YichengShen/redis-sync-rep) and [instructions on running the code](docs/run-redis-sync-rep.md).
 
 ## 6. If something goes wrong
 
