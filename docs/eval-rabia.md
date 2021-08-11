@@ -79,9 +79,11 @@ TODO
 
 ## 6.4 Integration with Redis
 
-- Sync-Rep (1): requires two VMs, one as the Redis leader and the other as a follower; See steps [here](run-redis-sync-rep.md)
+- Sync-Rep (1): requires two VMs, one as the Redis leader and the other as a follower.
 
-- Sync-Rep (2): requires three VMs, one as the Redis leader and the other two as followers;
+- Sync-Rep (2): requires three VMs, one as the Redis leader and the other two as followers.
+
+  For both Sync-Rep (1) and (2), see steps [here](run-redis-sync-rep.md) to adjust configurations and run. The configuration without batching (`NClients=1` and `ClientBatchSize=1`) generates the lower bars; the configuration with batching (`NClients=15` and `ClientBatchSize=20`) generates the higher bars.
 
 - Rabia: Following the steps in 6.1, run Rabia on CloudLab with profile `profile_sosp_5a.sh` to generate the low bar and
   `profile_sosp_5b.sh` to generate the high bar.
