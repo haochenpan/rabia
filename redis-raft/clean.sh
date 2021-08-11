@@ -1,0 +1,1 @@
+cd ~/go/src/rabia/redis-raft && rm *.db && rm *.idx
