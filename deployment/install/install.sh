@@ -43,7 +43,7 @@ function install_python() {
     sudo add-apt-repository -y ppa:deadsnakes/ppa
     sudo apt update
     sudo apt install -y ${py_ver}
-    python3.8 --version
+    ${py_ver} --version
 }
 
 # Installs a version of Golang since Rabia is written in Golang
