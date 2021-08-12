@@ -8,12 +8,17 @@ platform and machines:
     - 3 client VMs in us-east-1-b, each with 30 vCPUs and 120 GB RAM
     - OS: Ubuntu-1604
 - CloudLab for all other evaluations
-    - Use the following [profile](https://www.cloudlab.us/show-profile.php?uuid=1af34047-fb02-11eb-84f8-e4434b2381fc).
+    - Instantiate the following [profile](https://www.cloudlab.us/show-profile.php?uuid=1af34047-fb02-11eb-84f8-e4434b2381fc).
 
 Rabia's installation
 - On Google Compute Engine: Use the script in [Section 2.1 of How to install and run Rabia](run-rabia.md#21-on-a-cluster-of-newly-instantiated-vms)
     
-- CloudLab: Same as GCP. Use the script in [Section 2.1 of How to install and run Rabia](run-rabia.md#21-on-a-cluster-of-newly-instantiated-vms)
+- CloudLab: Once the experiment profile noted above has been instantiated, you have two methods of completing the installation:
+  1. SSH to your VMs using root@[hostname] and the id_rsa private key found in deployment/install. 
+      1. Hostnames can be found in the "list view" portion of your experiment page.
+  2. Use the web shell feature on Cloudlab to access each VM.
+     
+After choosing a method, it is same as GCP. Use the script in [Section 2.1 of How to install and run Rabia](run-rabia.md#21-on-a-cluster-of-newly-instantiated-vms) for each VM.
 
 After installing Rabia on each VM, enter the `deployment/run` folder and 
 call `. single.sh` to make sure the installation works; The script starts
