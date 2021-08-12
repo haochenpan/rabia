@@ -63,7 +63,7 @@ run_once() {
   # 6. analysis the generated logs
   download_logs
   # available and optional flags: print-title, print-round-dist
-  python3.8 ${RCFolder}/deployment/analysis/analysis.py ${RCFolder}/logs print-round-dist 1>>${RCFolder}/result.txt
+  python3.8 ${RCFolder}/deployment/analysis/analysis.py ${RCFolder}/logs print-title print-round-dist 1>>${RCFolder}/result.txt
   # 7. reset shell variables (for the next run)
   reset_parameters
 }
