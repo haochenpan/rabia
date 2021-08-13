@@ -20,7 +20,7 @@
 ### 1.2 On CloudLab
 
 - Hardware: Use the [profile](https://www.cloudlab.us/show-profile.php?uuid=1af34047-fb02-11eb-84f8-e4434b2381fc)
-- Operating System: Ubuntu 18.04 LTS (preferred) or Ubuntu 16.04 LTS (Default OS in the above profile)
+- Operating System: Ubuntu 18.04 LTS (preferred and is the default OS in the above profile) or Ubuntu 16.04 LTS
 
 ### 1.3 About the root access, ARM machine, and the default installation path
 
