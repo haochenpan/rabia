@@ -304,10 +304,10 @@ multi_build_binary() {
     build_binary
     echo "distributing the built binary to all servers"
     for ip in "${ServerIps[@]}"; do
-        scp -o StrictHostKeyChecking=no -i ${key} ${RCFolder}/rc4 "${User}"@"${ip}":${RCFolder} &
+        scp -o StrictHostKeyChecking=no -i ${key} ${RCFolder}/rabia "${User}"@"${ip}":${RCFolder} &
     done
     for ip in "${ClientIps[@]}"; do
-        scp -o StrictHostKeyChecking=no -i ${key} ${RCFolder}/rc4 "${User}"@"${ip}":${RCFolder} &
+        scp -o StrictHostKeyChecking=no -i ${key} ${RCFolder}/rabia "${User}"@"${ip}":${RCFolder} &
     done
     wait
 }
