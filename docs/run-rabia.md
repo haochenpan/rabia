@@ -292,7 +292,20 @@ Some parameters may cause an error. Check whether your parameters in `profile0.s
 the comments. Always start some experiments with small number of clients, small batch sizes, etc -- so then you know
 whether that is a software problem or scalability problem.
 
-### 6.4 Other miscellaneous problems
+### 6.4 The analysis script throws an error
+```bash
+Traceback (most recent call last):
+File "/root/go/src/rabia/deployment/analysis/analysis.py", line 256, in <module>
+print_statistics()
+File "/root/go/src/rabia/deployment/analysis/analysis.py", line 233, in print_statistics
+load_server_info(log_folder, param, trial)
+File "/root/go/src/rabia/deployment/analysis/analysis.py", line 199, in load_server_info
+machine_mid80_throughput = sum(machine_mid80_throughputs) / len(machine_mid80_throughputs)
+ZeroDivisionError: division by zero
+```
+If you receive this error, you have to run the experiment for longer by increasing the number of client requests sent. 
+
+### 6.5 Other miscellaneous problems
 
 - `panic: mkdir .../go/src/rc3/logs: not a directory`
 
