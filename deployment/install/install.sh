@@ -58,6 +58,14 @@ function install_go() {
     go version
 }
 
+# Installs pip and numpy for python3. Used for non-pipelined Paxos and EPaxos testing.
+function install_numpy() {
+    sudo apt install python3.8-distutils
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo python3.8 get-pip.py
+    pip install numpy
+}
+
 # Installs some Golang packages used by Rabia
 function install_go_deps() {
     go get -u github.com/gogo/protobuf/gogoproto           # gogo-protobuf
@@ -79,6 +87,7 @@ function install_redis() {
 
 install_key
 install_python
+install_numpy
 install_go
 install_go_deps
 install_redis
