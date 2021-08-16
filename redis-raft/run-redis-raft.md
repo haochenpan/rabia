@@ -1,7 +1,7 @@
 # Redis Raft
 ## Installation
 ### Important Notes
-1. This installation requires 3 VMs
+1. This installation requires minimum 3 VMs (see NBs below)
 2. These instructions assume you have the Rabia project cloned on the standard Cloudlab profile (deployment/env/cloudlab)
 ```shell
     sudo su && cd
