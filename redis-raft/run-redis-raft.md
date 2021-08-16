@@ -1,6 +1,8 @@
 # Redis Raft
 ## Installation
-NB: These instructions assume you have the Rabia project cloned on the standard Cloudlab profile (~deployment/env/cloudlab)
+### Important Notes
+1. This installation requires 3 VMs
+2. These instructions assume you have the Rabia project cloned on the standard Cloudlab profile (deployment/env/cloudlab)
 ```shell
     sudo su && cd
     # clone the project to root
@@ -13,11 +15,11 @@ NB: These instructions assume you have the Rabia project cloned on the standard 
     . build.sh
 ```
 ## Running Redis-Raft
-We created a script to run RedisRaft across a cluster of nodes(multiple.sh), but to keep our methods clear, we suggest the following manual method.
+In the paper, we created a script to run RedisRaft across a cluster of nodes(multiple.sh), but we suggest the following manual method that makes the run methods clear.
 
 ### NBs:
 1. This script assumes port 5001 is open and unused. You may use any free port you like.
-2. HOST (1..n) represent the eth1 IPs found on each node after runnning ```ifconfig```. These typically start with ```10.10```
+2. <HOST (1..n)> represent the eth1 IPs found on each node after running ```ifconfig```. These typically start with ```10.10```
 3. RedisRaft recommends an odd number of nodes in a cluster. We have tested on 3.
 ### Steps
 
@@ -42,5 +44,5 @@ To kill the cluster and wipe the rdb files associated with the nodes:
     cd ~/go/src/rabia/redis-raft/multiple && . multiple_kill.sh
 ```
 
-### Results
+### Known Issues
 Seen in our testing and mentioned in the paper was the issue of constant leader election. See [here](https://github.com/haochenpan/rabia/blob/script/redis-raft/redis-raft/Redis-Raft%20Leader%20Election.png)
