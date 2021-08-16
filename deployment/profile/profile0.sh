@@ -119,7 +119,7 @@ RCFolder=~/go/src/rabia
 
 # Section 2. user configurations - type 2 (see comments above for their meanings)
 
-RCLogLevel=debug
+RCLogLevel=warn
 Rabia_ClosedLoop=true
 Rabia_ClientDistributingMethod=modulo # ad-hoc | modulo
 Rabia_ClientsPerServer=(1 0 0)
