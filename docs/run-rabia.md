@@ -67,7 +67,7 @@ See the steps to benchmark below and more explanations [here](read-rabia.md) and
 
 ### 2.2 on a cluster of VMs that have Go and Python installed
 
-Before running `install.sh`, remove `install_python` and `install_go` function calls in `install.sh`. Run `install.sh` 
+Before running `install.sh`, remove `install_python`, `install_numpy`, and `install_go` function calls in `install.sh`. Run `install.sh` 
 and double check `PATH`, `GOPATH`, and `GO111MODULE` variables are set properly as the `install_go` function does.
 
 Rabia's installation script installs Go 1.15.8 and the latest stable Python3.8, so if some unknown problems occurs
