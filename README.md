@@ -14,6 +14,13 @@ Through Randomization," describes Rabia's design and evaluations in detail.
 
 #### Project Keywords: state-machine replication (SMR), consensus, formal verification
 
+## Project structure
+- deployment, internal, roles, and `main.go`: Rabia's core code in Go and the project's auxiliary code in Bash and Python
+- proofs: proof scripts for the core weak Multivalued consensus part of the Rabia protocol.
+- redis-raft: redis-raft related code and instructions
+- bin: compiled binaries of Paxos and EPaxos (from various branches in [(E)Paxos](https://github.com/zhouaea/epaxos) and 
+  [(E)Paxos-NP](https://github.com/zhouaea/epaxos-single) codebases)
+- docs: documentations, see below
 
 ## Documentations
 
