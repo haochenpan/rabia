@@ -18,8 +18,8 @@ Through Randomization," describes Rabia's design and evaluations in detail.
 - deployment, internal, roles, and `main.go`: Rabia's implementation in Go and the project's auxiliary code
 - proofs: proof scripts for the core weak Multivalued consensus part of the Rabia protocol.
 - redis-raft: redis-raft related code and instructions
-- bin: compiled binaries of Paxos and EPaxos from various branches in [(E)Paxos](https://github.com/zhouaea/epaxos) and 
-  [(E)Paxos-NP](https://github.com/zhouaea/epaxos-single) codebases
+- epaxos: compiled binaries of Paxos and EPaxos for cloudlab machines from various branches in [(E)Paxos](https://github.com/zhouaea/epaxos) and 
+  [(E)Paxos-NP](https://github.com/zhouaea/epaxos-single) codebases + scripts to run them
 - docs: documentations, see below
 
 ## Documentations
