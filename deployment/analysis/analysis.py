@@ -215,7 +215,7 @@ def print_statistics():
             "nf": {"p": "Num of Faulty Servers", "v": int(sp[1][2:])},
             "nc": {"p": "Num of Clients", "v": int(sp[2][2:])},
             "nC": {"p": "Concurrency", "v": int(sp[3][2:])},
-            "cr": {"p": "Num of Requests Per Client", "v": int(sp[4][2:])},
+            "cr": {"p": "Client Timeout (s)", "v": int(sp[4][2:])},
             "ct": {"p": "Client Think Time (ms)", "v": int(sp[5][2:])},
             "cb": {"p": "Client Batch Size", "v": int(sp[6][2:])},
             "pb": {"p": "Proxy Batch Size", "v": int(sp[7][2:])},
