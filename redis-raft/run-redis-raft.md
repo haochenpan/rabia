@@ -48,4 +48,5 @@ cd ~/go/src/rabia/redis-raft/multiple && . manual_kill.sh
 ```
 
 ### Known Issues
-Seen in our testing and mentioned in the paper was the issue of constant leader election. See [here](https://github.com/haochenpan/rabia/blob/script/redis-raft/redis-raft/Redis-Raft%20Leader%20Election.png)
+Seen in our testing and mentioned in the paper was the issue of constant leader election. See an example [here](https://github.com/haochenpan/rabia/blob/main/redis-raft/Redis-Raft%20Leader%20Election.png)
+***In case the above link doesn't work, it refers to the "Redis-Raft Leader Election" png in the root of redis-raft subdir***
