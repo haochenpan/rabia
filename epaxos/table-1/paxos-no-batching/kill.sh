@@ -1,4 +1,4 @@
-source ./base-profile.sh
+source ./profile.sh
 
 pgrep -af ${EPaxosFolder}/bin/master | while read -r pid cmd ; do
      echo "pid: $pid, cmd: $cmd"
