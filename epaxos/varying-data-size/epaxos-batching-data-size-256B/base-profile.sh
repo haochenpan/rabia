@@ -6,7 +6,7 @@ FirstServerPort=17070 # change it when only necessary (i.e., firewall blocking, 
 NumOfServerInstances=3 # before recompiling, try no more than 5 servers. See Known Issue # 4
 NumOfClientInstances=20 #20,40,60,80,100,200,300,400,500
 
-reqsNb=1000
+reqsNb=20000
 writes=50
 dlog=false
 conflicts=0
