@@ -15,6 +15,6 @@
 END
 # Disable all CPUs except cpu 0 (the first cpu)
 # modify numbers in cpu[a-b] to control number of CPUs to disable
-for cpu in /sys/devices/system/cpu/cpu[1-99]*/online; do
+for cpu in /sys/devices/system/cpu/cpu[4-99]*/online; do
     echo 0 >"$cpu"
 done
