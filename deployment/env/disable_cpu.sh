@@ -13,8 +13,12 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 END
-# Disable all CPUs except cpu 0 (the first cpu)
+# Disable all CPUs except cpu 0 and 8 (the first core), and 1 and 9 (the second core)
 # modify numbers in cpu[a-b] to control number of CPUs to disable
-for cpu in /sys/devices/system/cpu/cpu[2-99]*/online; do
+for cpu in /sys/devices/system/cpu/cpu[2-7]*/online; do
+    echo 0 >"$cpu"
+done
+
+for cpu in /sys/devices/system/cpu/cpu[10-15]*/online; do
     echo 0 >"$cpu"
 done
