@@ -60,7 +60,7 @@ function install_go() {
 
 # Installs pip and numpy for python3. Used for non-pipelined Paxos and EPaxos testing.
 function install_numpy() {
-    sudo apt install python3.8-distutils
+    sudo apt install -y python3.8-distutils
     wget https://bootstrap.pypa.io/get-pip.py
     sudo python3.8 get-pip.py
     pip install numpy
