@@ -10,6 +10,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 END
+# For use on cloudlab utah m510 server machines 
 # Reenable all CPUs except cpu 0, since it is off limits even to the super user
 # modify range {a..b} (where and b are included) to control number of CPUs to reenable
 for cpu in {1..15}
