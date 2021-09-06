@@ -15,10 +15,12 @@
 END
 # Disable all CPUs except cpu 0 and 8 (the first core), and 1 and 9 (the second core)
 # modify numbers in cpu[a-b] to control number of CPUs to disable
-for cpu in /sys/devices/system/cpu/cpu[2-7]*/online; do
-    echo 0 >"$cpu"
+for cpu in {2..7}
+do
+    echo 0 > /sys/devices/system/cpu/cpu$cpu/online
 done
 
-for cpu in /sys/devices/system/cpu/cpu[10-15]*/online; do
-    echo 0 >"$cpu"
+for cpu in {10..15}
+do
+    echo 0 > /sys/devices/system/cpu/cpu$cpu/online
 done
