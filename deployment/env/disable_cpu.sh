@@ -14,7 +14,7 @@
     limitations under the License.
 END
 # Disable all CPUs except cpu 0 and 8 (the first core), and 1 and 9 (the second core)
-# modify numbers in cpu[a-b] to control number of CPUs to disable
+# modify range {a..b} (where a and b are included) to control number of CPUs to disable
 for cpu in {2..7}
 do
     echo 0 > /sys/devices/system/cpu/cpu$cpu/online
