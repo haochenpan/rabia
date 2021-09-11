@@ -3,19 +3,19 @@ source ./base-profile.sh
 function prepareRun() {
     for ip in "${ServerIps[@]}"
     do
-        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "mkdir -p ${LogFolder}; rm -rf ${LogFolder}/*; cd ${EPaxosFolder} && chmod 777 runPaxos.sh" 2>&1
+        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "mkdir -p ${LogFolder}; rm -rf ${LogFolder}/*; cd ${PaxosFolder} && chmod 777 runPaxos.sh" 2>&1
         sleep 0.3
     done
     for ip in "${ClientIps[@]}"
     do
-        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "mkdir -p ${LogFolder}; rm -rf ${LogFolder}/*; cd ${EPaxosFolder} && chmod 777 runPaxos.sh" 2>&1
+        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "mkdir -p ${LogFolder}; rm -rf ${LogFolder}/*; cd ${PaxosFolder} && chmod 777 runPaxos.sh" 2>&1
         sleep 0.3
     done
     wait
 }
 
 function runMaster() {
-    "${EPaxosFolder}"/bin/master -N ${NumOfServerInstances} 2>&1 &
+    "${PaxosFolder}"/bin/master -N ${NumOfServerInstances} 2>&1 &
 }
 
 function runServersOneMachine() {
@@ -26,7 +26,7 @@ function runServersOneMachine() {
         svrPort=$((FirstServerPort + $idx))
         if [[ ${svrIpIdx} -eq ${EPMachineIdx} ]]
         then
-            "${EPaxosFolder}"/bin/server -port ${svrPort} -maddr ${MasterIp} -addr ${svrIp} -p 4 -thrifty=${thrifty} 2>&1 &
+            "${PaxosFolder}"/bin/server -port ${svrPort} -maddr ${MasterIp} -addr ${svrIp} -p 4 -thrifty=${thrifty} 2>&1 &
         fi
     done
 }
@@ -40,7 +40,7 @@ function runClientsOneMachine() {
         cliIp=${ClientIps[cliIpIdx]}
         if [[ ${cliIpIdx} -eq ${EPMachineIdx} ]]
         then
-            "${EPaxosFolder}"/bin/client -maddr ${MasterIp} -q ${reqsNb} -w ${writes} -r ${rounds} -p 30 -c ${conflicts} > ${LogFolder}/S${NumOfServerInstances}-C${NumOfClientInstances}-q${reqsNb}-w${writes}-r${rounds}-c${conflicts}--client${idx}.out 2>&1 &
+            "${PaxosFolder}"/bin/client -maddr ${MasterIp} -q ${reqsNb} -w ${writes} -r ${rounds} -p 30 -c ${conflicts} > ${LogFolder}/S${NumOfServerInstances}-C${NumOfClientInstances}-q${reqsNb}-w${writes}-r${rounds}-c${conflicts}--client${idx}.out 2>&1 &
         fi
     done
 }
@@ -52,7 +52,7 @@ function runServersAllMachines() {
     MachineIdx=0
     for ip in "${ServerIps[@]}"
     do
-        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${EPaxosFolder} && EPScriptOption=StartServers EPMachineIdx=${MachineIdx} /bin/bash runPaxos.sh" 2>&1 &
+        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${PaxosFolder} && EPScriptOption=StartServers EPMachineIdx=${MachineIdx} /bin/bash runPaxos.sh" 2>&1 &
         sleep 0.3
         ((MachineIdx++))
     done
@@ -62,7 +62,7 @@ function runClientsAllMachines() {
     MachineIdx=0
     for ip in "${ClientIps[@]}"
     do
-        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${EPaxosFolder} && EPScriptOption=StartClients EPMachineIdx=${MachineIdx} /bin/bash runPaxos.sh" 2>&1 &
+        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${PaxosFolder} && EPScriptOption=StartClients EPMachineIdx=${MachineIdx} /bin/bash runPaxos.sh" 2>&1 &
         sleep 0.3
         ((MachineIdx++))
     done
@@ -74,15 +74,15 @@ function runServersAndClientsAllMachines() {
     runClientsAllMachines
 }
 
-function SendEPaxosFolder() {
+function SendPaxosFolder() {
     for ip in "${ServerIps[@]}"
     do
-        scp -o StrictHostKeyChecking=no -i ${SSHKey} -r ${EPaxosFolder} root@"$ip":~  2>&1 &
+        scp -o StrictHostKeyChecking=no -i ${SSHKey} -r ${PaxosFolder} root@"$ip":~  2>&1 &
         sleep 0.3
     done
     for ip in "${ClientIps[@]}"
     do
-        scp -o StrictHostKeyChecking=no -i ${SSHKey} -r ${EPaxosFolder} root@"$ip":~  2>&1 &
+        scp -o StrictHostKeyChecking=no -i ${SSHKey} -r ${PaxosFolder} root@"$ip":~  2>&1 &
         sleep 0.3
     done
     wait
@@ -98,12 +98,12 @@ function SSHCheckClientProgress() {
 function EpKillAll() {
     for ip in "${ServerIps[@]}"
     do
-        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${EPaxosFolder} && chmod 777 kill.sh && /bin/bash kill.sh" 2>&1 &
+        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${PaxosFolder} && chmod 777 kill.sh && /bin/bash kill.sh" 2>&1 &
         sleep 0.3
     done
     for ip in "${ClientIps[@]}"
     do
-        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${EPaxosFolder} && chmod 777 kill.sh && /bin/bash kill.sh" 2>&1 &
+        ssh -o StrictHostKeyChecking=no -i ${SSHKey} root@"$ip" "cd ${PaxosFolder} && chmod 777 kill.sh && /bin/bash kill.sh" 2>&1 &
         sleep 0.3
     done
     wait
@@ -162,7 +162,7 @@ function Main() {
     esac
 }
 
-#SendEPaxosFolder
+#SendPaxosFolder
 #prepareRun;
 RemoveLogs
 wait

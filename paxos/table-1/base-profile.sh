@@ -18,5 +18,5 @@ rounds=$((reqsNb / clientBatchSize))
 
 # some constants
 SSHKey=/root/go/src/rabia/deployment/install/id_rsa # RC project has it
-EPaxosFolder=/root/go/src/epaxos # where the epaxos' bin folder is located
-LogFolder=/root/go/src/epaxos/logs
+PaxosFolder=/root/go/src/rabia/paxos/table-1 # where the paxos' bin folder is located
+LogFolder=/root/go/src/rabia/paxos/table-1/logs
