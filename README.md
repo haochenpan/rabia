@@ -2,19 +2,18 @@
 
 ## Introduction
 
-Rabia is a simple and high performance framework for implementing state-machine replication (SMR) within a datacenter. 
-The main innovation of Rabia is in using randomization to simplify the design. Rabia provides the following two features: 
-(i) It does not need any fail-over protocol and supports trivial auxiliary protocols like log compaction, snapshotting, 
-and reconfiguration, these components often considered the most challenging when developing SMR systems; and (ii) It
-provides high performance, up to 1.5x higher throughput than the closest competitor (i.e., EPaxos) in an ideal setup 
-(same availability zone with 3 replicas) and comparable with a larger 𝑛 or when deployed in multiple zones. 
+We introduce Rabia, a simple and high performance framework for implementing state-machine replication (SMR) within a datacenter. The main innovation of Rabia is in using _randomization_ to simplify the design. Rabia provides the following two features: (i) It does not need any fail-over protocol and supports trivial auxiliary protocols like log compaction, snapshotting, and reconfiguration, components that are often considered the most challenging when developing SMR systems; and (ii) It provides high performance, up to 1.5x higher throughput than the closest competitor (i.e., EPaxos) in a favorable setup (same availability zone with three replicas) and is comparable with a larger number of replicas or when deployed in multiple availability zones.
 
-Our SOSP paper, "Rabia: Simplifying State-Machine Replication
-Through Randomization," describes Rabia's design and evaluations in detail.
+Our SOSP paper, "[Rabia: Simplifying State-Machine Replication Through Randomization](https://arxiv.org/abs/2109.12616)," describes Rabia's design and evaluations in detail ([SOSP Artifact Review Summary](https://sysartifacts.github.io/sosp2021/summaries/rabia.html)) and earns three badges: artifact available, artifact evaluated, and artifact reproduced. 
 
-#### Project Keywords: state-machine replication (SMR), consensus, formal verification
+#### Project Keywords: 
+- state-machine replication (SMR), consensus, and formal verification
 
-## Project structure
+#### CCS Concepts: 
+- Computer systems organization → Dependable and fault-tolerant systems and networks; 
+- Computing methodologies → Distributed algorithms.
+
+## Repository structure
 - deployment, internal, roles, and `main.go`: Rabia's implementation in Go and the project's auxiliary code
 - proofs: proof scripts for the core weak Multivalued consensus part of the Rabia protocol.
 - redis-raft: redis-raft related code and instructions
@@ -24,6 +23,7 @@ Through Randomization," describes Rabia's design and evaluations in detail.
 
 ## Documentations
 
+[]()
 [How to install and run Rabia](docs/run-rabia.md) -- install and run Rabia on a single machine or a cluster of machines
 
 [How to read Rabia's codebase](docs/read-rabia.md) -- an introduction to Rabia's implementation
