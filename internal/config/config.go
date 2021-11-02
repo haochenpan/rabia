@@ -73,7 +73,7 @@ type Config struct {
 	ClientThinkTime     int           // the think time between sending two requests (ms)
 	ClientBatchSize     int           // the num. of DB operations in a client's request
 	ProxyBatchSize      int           // the num. of client requests in a consensus object
-	ProxyBatchTimeout   time.Duration // the max. time between submitting requests (ns, nanosecond)
+	ProxyBatchTimeout   time.Duration // the max. time between submitting requests (ms, Millisecond)
 	NetworkBatchSize    int           // reserved
 	NetworkBatchTimeout time.Duration // reserved (ms, Millisecond)
 
