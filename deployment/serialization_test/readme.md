@@ -2,9 +2,9 @@ Compare the serialization performance of [Gobin](https://github.com/efficient/go
 [Protobuf](https://github.com/protocolbuffers/protobuf), and 
 [GoGo-Protobuf](https://github.com/gogo/protobuf)
 
-1. Install Gobin:
+1. Install Gobin (amy require root access, setting `GO111MODULE=off` or `go env -w GO111MODULE=off`):
 ```shell
-cd go/src
+cd ~/go/src
 git clone https://github.com/efficient/gobin-codegen.git
 cd gobin-codegen
 export GOPATH=`/bin/pwd`
@@ -12,13 +12,13 @@ go install bi
 # log out your terminal and log in again to restore the GOPATH
 ```
 
-2. Install Protobuf and GoGo-Protobuf: see comments in `rabia/internal/msg/msg.proto`
+2. Install Protobuf and GoGo-Protobuf: see comments in `rabia/internal/msg/msg.proto`, so he `protoc` command could work
 
 3. serialization_test/serialization:
 
 - for running **local tests**
 - remove 6 gobin*, gogo*, proto* files
-- comment out every line of local_serialization_test.go and setup.go, except their first lines
+- comment out every line of local_serialization_test.go and setup.go, except their first lines - package declaration
 - modify KeyNum in struct_gen_test.go, and run it to generate structs
 - uncomment all previous commented lines in two files
 - make sure readBufSize in local_serialization_test.go is enough for your data, so as various variables in

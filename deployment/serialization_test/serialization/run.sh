@@ -18,8 +18,8 @@ END
 # serialization_test folder: cluster testing
 
 rm -f *.pb.go
-~/go/src/gobin-codegen/bin/bi ~/go/src/rc3/deployment/serialization_test/serialization/gobin_msg.go \
-    > ~/go/src/rc3/deployment/serialization_test/serialization/gobin_msg.pb.go
+~/go/src/gobin-codegen/bin/bi ~/go/src/rabia/deployment/serialization_test/serialization/gobin_msg.go \
+    > ~/go/src/rabia/deployment/serialization_test/serialization/gobin_msg.pb.go
 protoc -I=. -I=$GOPATH/src -I=$GOPATH/src/google/protobuf --go_out=. ./proto_msg.proto
 protoc -I=. -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/protobuf --gogoslick_out=. ./gogo_msg.proto
 GOMAXPROCS=2 go test -bench=. -test.benchtime=2s
