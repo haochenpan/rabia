@@ -23,7 +23,7 @@ Our SOSP paper, "[Rabia: Simplifying State-Machine Replication Through Randomiza
 
 ## Documentations
 
-[Paper erratas](docs/erratas.md) -- Erratas of our paper
+[Paper errata](docs/errata.md) -- Erratas of our paper
 
 [How to install and run Rabia](docs/run-rabia.md) -- install and run Rabia on a single machine or a cluster of machines
 
