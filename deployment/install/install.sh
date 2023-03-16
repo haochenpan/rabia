@@ -24,7 +24,7 @@ END
 
 rabia_folder=~/go/src/rabia        # the path to the Rabia folder
 redis_folder=~                     # the path where Redis is installed
-go_tar=go1.15.8.linux-amd64.tar.gz # the version of Golang to be downloaded in install_go
+go_tar=go1.20.2.linux-amd64.tar.gz # the version of Golang to be downloaded in install_go
 py_ver=python3.8                   # the version of Python to be downloaded in install_python
 redis_ver=redis-6.2.2
 
