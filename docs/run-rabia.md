@@ -70,7 +70,7 @@ See the steps to benchmark below and more explanations [here](read-rabia.md) and
 Before running `install.sh`, remove `install_python`, `install_numpy`, and `install_go` function calls in `install.sh`. Run `install.sh` 
 and double check `PATH`, `GOPATH`, and `GO111MODULE` variables are set properly as the `install_go` function does.
 
-Rabia's installation script installs Go 1.15.8 and the latest stable Python3.8, so if some unknown problems occurs
+Rabia's installation script installs Go 1.26.11 and the latest stable Python3.8, so if some unknown problems occurs
 during installing/running Rabia, maybe try these versions of dependencies. 
 
 `install.sh` also installs a recent version of Redis by default. To disable this feature, remove the `install_redis` 

@@ -24,7 +24,7 @@ END
 
 rabia_folder=~/go/src/rabia        # the path to the Rabia folder
 redis_folder=~                     # the path where Redis is installed
-go_tar=go1.20.2.linux-amd64.tar.gz # the version of Golang to be downloaded in install_go
+go_tar=go1.26.11.linux-amd64.tar.gz # the version of Golang to be downloaded in install_go
 py_ver=python3.8                   # the version of Python to be downloaded in install_python
 redis_ver=redis-6.2.2
 
@@ -67,11 +67,10 @@ function install_numpy() {
 }
 
 # Installs some Golang packages used by Rabia
+# The module versions are pinned in go.mod, so download those instead of upgrading them with "go get -u"
 function install_go_deps() {
-    go get -u github.com/gogo/protobuf/gogoproto           # gogo-protobuf
-    go get -u google.golang.org/protobuf/cmd/protoc-gen-go # vanilla protobuf
-    go get -u github.com/rs/zerolog/log
-    go get -u github.com/go-redis/redis/v8
+    (cd "${rabia_folder}" && go mod download)
+    go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26.0 # vanilla protobuf, same version as go.mod
 }
 
 function install_redis() {

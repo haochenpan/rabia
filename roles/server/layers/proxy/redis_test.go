@@ -19,14 +19,36 @@ import (
 	"context"
 	"fmt"
 	"github.com/go-redis/redis/v8"
+	"net"
+	"os"
 	"rabia/internal/config"
 	"rabia/internal/message"
 	"testing"
+	"time"
 )
 
 var ctx = context.Background()
 
+/*
+	requireRedis skips the test when a Redis server is not reachable at one of addrs. When the environment variable
+	RABIA_REQUIRE_REDIS is set (as it is in CI), an unreachable server fails the test instead.
+*/
+func requireRedis(t *testing.T, addrs ...string) {
+	t.Helper()
+	for _, addr := range addrs {
+		conn, err := net.DialTimeout("tcp", addr, time.Second)
+		if err != nil {
+			if os.Getenv("RABIA_REQUIRE_REDIS") != "" {
+				t.Fatalf("redis is not reachable at %s: %v", addr, err)
+			}
+			t.Skipf("redis is not reachable at %s (set RABIA_REQUIRE_REDIS=1 to fail instead): %v", addr, err)
+		}
+		_ = conn.Close()
+	}
+}
+
 func TestRedis(t *testing.T) {
+	requireRedis(t, "localhost:6379")
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "", // no password set
@@ -60,6 +82,7 @@ func TestRedis(t *testing.T) {
 }
 
 func TestProxy_RedisBatchExecuteCmd(t *testing.T) {
+	requireRedis(t, "localhost:6379", "localhost:6380", "localhost:6381")
 	config.Conf.StorageMode = 2
 	config.Conf.RedisAddr = []string{"localhost:6379", "localhost:6380", "localhost:6381"}
 	config.Conf.ProxyBatchSize = 5

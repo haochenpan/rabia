@@ -27,10 +27,24 @@ import (
 
 func TestController(t *testing.T) {
 	config.Conf.ControllerAddr = ":8070"
-	config.Conf.ProjectFolder = "/Users/roger/go/src/rc3"
+	// The controller writes logs under ProjectFolder and prints the ASCII art
+	// stored at ProjectFolder/roles/controller/go, so give it a scratch folder
+	// that contains a copy of that file.
+	config.Conf.ProjectFolder = t.TempDir()
 	err := os.MkdirAll(path.Join(config.Conf.ProjectFolder, "logs"), os.ModePerm)
 	if err != nil {
-		panic("should not happen")
+		t.Fatalf("cannot create the logs folder: %v", err)
+	}
+	art, err := os.ReadFile("go")
+	if err != nil {
+		t.Fatalf("cannot read the ASCII art file: %v", err)
+	}
+	artDir := path.Join(config.Conf.ProjectFolder, "roles", "controller")
+	if err = os.MkdirAll(artDir, os.ModePerm); err != nil {
+		t.Fatalf("cannot create %s: %v", artDir, err)
+	}
+	if err = os.WriteFile(path.Join(artDir, "go"), art, 0o644); err != nil {
+		t.Fatalf("cannot copy the ASCII art file: %v", err)
 	}
 	config.Conf.NServers = 3
 	config.Conf.NFaulty = 1
