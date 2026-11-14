@@ -37,7 +37,20 @@ func check(e error) {
 	}
 }
 
+/*
+	The Test_Generate_* functions are code generators: each one rewrites a source file in this folder for the KeyNum
+	above. They are skipped in a normal test run so that "go test ./..." leaves the tree unchanged. Run them with
+	RABIA_GENERATE_MSGS=1 go test -run Test_Generate ./deployment/serialization_test/serialization/
+*/
+func skipUnlessGenerating(t *testing.T) {
+	t.Helper()
+	if os.Getenv("RABIA_GENERATE_MSGS") == "" {
+		t.Skip("rewrites a source file; set RABIA_GENERATE_MSGS=1 to run this generator")
+	}
+}
+
 func Test_Generate_GoBinMsg(t *testing.T) {
+	skipUnlessGenerating(t)
 	f, err := os.Create("./gobin_msg.go")
 	check(err)
 	_, _ = f.WriteString("package serialization\n")
@@ -54,6 +67,7 @@ func Test_Generate_GoBinMsg(t *testing.T) {
 }
 
 func Test_Generate_GoGoMsg(t *testing.T) {
+	skipUnlessGenerating(t)
 	f, err := os.Create("./gogo_msg.proto")
 	check(err)
 	_, _ = f.WriteString("syntax = \"proto3\";\n\n" +
@@ -77,6 +91,7 @@ func Test_Generate_GoGoMsg(t *testing.T) {
 }
 
 func Test_Generate_ProtoMsg(t *testing.T) {
+	skipUnlessGenerating(t)
 	f, err := os.Create("./proto_msg.proto")
 	check(err)
 	_, _ = f.WriteString("syntax = \"proto3\";\n\n" +

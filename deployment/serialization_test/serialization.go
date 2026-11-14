@@ -23,7 +23,7 @@ import (
 	"io"
 	"math/rand"
 	"net"
-	. "rc3/deployment/serialization_test/serialization"
+	. "rabia/deployment/serialization_test/serialization"
 	"time"
 )
 
